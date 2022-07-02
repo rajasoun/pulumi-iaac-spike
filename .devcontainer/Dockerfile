@@ -31,7 +31,8 @@ RUN set -ex \
 
 # Pulumi
 RUN set -ex \
-    && curl -fsSL https://get.pulumi.com | sh
+    && curl -fsSL https://get.pulumi.com | bash -s -- --version $PULUMI_VERSION \
+    && mv ~/.pulumi/bin/* /usr/local/bin
     
 # Sentry CLI
 RUN set -ex \

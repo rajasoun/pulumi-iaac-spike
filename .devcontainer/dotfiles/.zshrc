@@ -114,9 +114,6 @@ export GNUPGHOME="$PGP_DIR"
 # auto complete
 complete -C aws_completer aws
 
-# Pulumi
-export PATH=$PATH:$HOME/.pulumi/bin
-
 if [ -z $IGNORE_GHELP ];then
     source /workspaces/automator/ghelp.bash
 fi
