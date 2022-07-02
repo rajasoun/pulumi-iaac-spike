@@ -32,6 +32,10 @@ RUN set -ex \
 # Pulumi
 RUN set -ex \
     && curl -fsSL https://get.pulumi.com | sh
+    
+# Sentry CLI
+RUN set -ex \
+    && curl -fsSL https://sentry.io/get-cli/ | bash
 
 # oh-my-zsh plugins
 # 	zsh-autosuggestions - suggests commands as you type based on history and completions
