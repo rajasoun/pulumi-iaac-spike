@@ -227,3 +227,5 @@ credentials
 .ops
 .env.bak
 .sequence
+
+Pulumi.*.yaml
