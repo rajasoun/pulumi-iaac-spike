@@ -29,6 +29,10 @@ RUN set -ex \
         https://${AWS_VAULT_URL}/${AWS_VAULT_VERSION}/aws-vault-linux-amd64 \
     && chmod 755 /usr/local/bin/aws-vault
 
+# Pulumi
+RUN set -ex \
+    && curl -fsSL https://get.pulumi.com | sh
+
 # oh-my-zsh plugins
 # 	zsh-autosuggestions - suggests commands as you type based on history and completions
 #   zsh-syntax-highlighting - enables highlighting of commands as they are typed at a zsh prompt
