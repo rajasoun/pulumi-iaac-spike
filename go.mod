@@ -1,4 +1,4 @@
-module github.com/rajasoun/ephemeral-iaac
+module github.com/rajsoun/aws-manager
 
 go 1.18
 
