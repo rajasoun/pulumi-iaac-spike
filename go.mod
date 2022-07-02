@@ -1,6 +1,6 @@
-module pulumi-go-spike
+module github.com/rajasoun/ephemeral-iaac
 
-go 1.17
+go 1.18
 
 require (
 	github.com/pulumi/pulumi-aws/sdk/v5 v5.7.2
