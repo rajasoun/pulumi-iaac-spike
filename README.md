@@ -1,2 +1,3 @@
 # pulumi-iaac-spike
-Manage Ephemeral Infrastrcuture as Iaac
+
+Manage Ephemeral Infrastrcuture using Pulumi
