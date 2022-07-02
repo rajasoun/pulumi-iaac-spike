@@ -9,24 +9,27 @@ BLUE=$'\e[34m'
 ORANGE=$'\x1B[33m'
 
 function setup(){
-    pulumi stack init dev
+    stack=$1
+    pulumi stack init learning-cloud/$stack
     pulumi config set aws:region us-east-1 # any valid AWS region will work
+    pulumi stack select learning-cloud/ephemeral-iaac/$stack
 }
 
 function teardown(){
     pulumi destroy --yes
-    pulumi stack rm dev --yes
+    pulumi stack rm learning-cloud/$stack --yes
 }
 
 opt="$1"
+stack="${2:-dev}"
 choice=$( tr '[:upper:]' '[:lower:]' <<<"$opt" )
 
 case ${choice} in
     "setup")
-        setup
+        setup $stack
     ;;
     "teardown")
-        teardown
+        teardown $stack
     ;;
     *)
     echo "${RED}Usage: assist.sh < setup | teardown >  ${NC}"
