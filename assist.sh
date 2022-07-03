@@ -19,7 +19,7 @@ function check_stack_exist(){
 
 function setup(){
     stack=$1
-    pulumi stack init learning-cloud/$stack
+    pulumi stack init learning-cloud/ephemeral-iaac/$stack
     pulumi config set aws:region us-east-1 # any valid AWS region will work
     pulumi stack select learning-cloud/ephemeral-iaac/$stack
     echo -e "${GREEN}Stack $stack created successfully${NC}\n" 
@@ -30,7 +30,7 @@ function teardown(){
     check_stack_exist $stack || exit 1
     pulumi destroy --yes
     pulumi stack select learning-cloud/ephemeral-iaac/$stack
-    pulumi stack rm learning-cloud/$stack --yes
+    pulumi stack rm learning-cloud/ephemeral-iaac/$stack --yes
     echo -e "${GREEN}Stack $stack destroyed successfully${NC}\n" 
 }
 
