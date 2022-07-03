@@ -3,5 +3,4 @@ runtime: go
 description: Ephemeral Infrastructure as Code - Spike
 
 config:
-  aws:region: us-east-1
   ephemeral-iaac:bucketName: pulumi-iaac-spike-demo-bucket
