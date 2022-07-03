@@ -228,4 +228,4 @@ credentials
 .env.bak
 .sequence
 
-Pulumi.*.yaml
+
