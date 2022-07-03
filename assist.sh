@@ -41,9 +41,8 @@ function setup(){
 function teardown(){
     org_proj_stack=$1
     check_stack_exist $org_proj_stack || not_exist_err_msg
-    pulumi destroy --yes
     pulumi stack select $org_proj_stack
-    pulumi stack rm $org_proj_stack --yes
+    pulumi stack rm $org_proj_stack --yes --force
     echo -e "${GREEN}Stack $org_proj_stack destroyed successfully${NC}\n" 
 }
 
