@@ -2,5 +2,3 @@ name: ephemeral-iaac
 runtime: go
 description: Ephemeral Infrastructure as Code - Spike
 
-config:
-  ephemeral-iaac:bucketName: pulumi-iaac-spike-demo-bucket
