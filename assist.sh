@@ -36,6 +36,7 @@ function setup(){
     pulumi config set aws:region us-east-1 # any valid AWS region will work
     pulumi stack select $org_proj_stack
     echo -e "${GREEN}Stack $org_proj_stack created successfully${NC}\n" 
+    echo -e "${ORANGE}Vist: ${UNDERLINE}https://app.pulumi.com/$organization/$project ${NC}\n"
 }
 
 function teardown(){
