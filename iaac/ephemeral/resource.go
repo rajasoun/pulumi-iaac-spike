@@ -6,6 +6,11 @@ import (
 
 func (aws *AWS) Manage() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
+		err := info(ctx)
+		if err != nil {
+			return err
+		}
+
 		// Create an AWS resource (S3 Bucket)
 		bucket, err := createBucket(ctx)
 		if err != nil {
