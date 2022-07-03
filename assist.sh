@@ -15,14 +15,23 @@ function check_stack_exist(){
     stack=$1
     stack_count=$(pulumi stack  ls | grep -v NAME | grep $stack | wc -l)
     if [ $stack_count = 0 ];then
-        echo -e "${RED}Stack $stack Does Not Exists. Exiting...${NC}\n" 
-        return 1
+        return 1  
     fi
+}
+
+function exist_err_msg(){
+    echo -e "${RED}Stack $stack Already Exists. Exiting...${NC}\n" 
+    exit 1
+}
+
+function not_exist_err_msg(){
+    echo -e "${RED}Stack $stack Does Not Exists. Exiting...${NC}\n" 
+    exit 1
 }
 
 function setup(){
     org_proj_stack=$1
-    check_stack_exist $org_proj_stack || exit 1
+    check_stack_exist $org_proj_stack && exist_err_msg
     pulumi stack init $org_proj_stack
     pulumi config set aws:region us-east-1 # any valid AWS region will work
     pulumi stack select $org_proj_stack
@@ -31,7 +40,7 @@ function setup(){
 
 function teardown(){
     org_proj_stack=$1
-    check_stack_exist $org_proj_stack || exit 1
+    check_stack_exist $org_proj_stack || not_exist_err_msg
     pulumi destroy --yes
     pulumi stack select $org_proj_stack
     pulumi stack rm $org_proj_stack --yes
