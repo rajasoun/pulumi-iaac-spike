@@ -24,7 +24,7 @@ func manageS3Bucket(ctx *pulumi.Context) error {
 	// Create an AWS resource (S3 Bucket)
 	bucket, err := createBucket(ctx, "pulumi-spike-demo-bucket")
 	if err != nil {
-		log.Printf("bucker creation failed. error = %v", err)
+		log.Printf("bucket creation failed. error = %v", err)
 		return err
 	}
 	// Export the name of the bucket
