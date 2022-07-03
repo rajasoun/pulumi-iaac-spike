@@ -21,8 +21,9 @@ func (aws *AWS) Manage() {
 }
 
 func manageS3Bucket(ctx *pulumi.Context) error {
+	s3Conf := loadConfig(ctx)
 	// Create an AWS resource (S3 Bucket)
-	bucket, err := createBucket(ctx, "pulumi-spike-demo-bucket")
+	bucket, err := createBucket(ctx, s3Conf.BucketName)
 	if err != nil {
 		log.Printf("bucket creation failed. error = %v", err)
 		return err
