@@ -1,6 +1,8 @@
 package ephemeral
 
 import (
+	"log"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -10,14 +12,22 @@ func (aws *AWS) Manage() {
 		if err != nil {
 			return err
 		}
-
-		// Create an AWS resource (S3 Bucket)
-		bucket, err := createBucket(ctx)
+		err = manageS3Bucket(ctx)
 		if err != nil {
 			return err
 		}
-		// Export the name of the bucket
-		ctx.Export("bucketName", bucket.ID())
 		return nil
 	})
+}
+
+func manageS3Bucket(ctx *pulumi.Context) error {
+	// Create an AWS resource (S3 Bucket)
+	bucket, err := createBucket(ctx, "pulumi-spike-demo-bucket")
+	if err != nil {
+		log.Printf("bucker creation failed. error = %v", err)
+		return err
+	}
+	// Export the name of the bucket
+	ctx.Export("bucketName", bucket.ID())
+	return nil
 }
