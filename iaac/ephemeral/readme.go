@@ -19,16 +19,24 @@ func pathToCurrentDir() (string, error) {
 }
 
 func info(ctx *pulumi.Context) error {
-	dir, err := pathToCurrentDir()
-	if err != nil {
-		return err
-	}
-	filePath := filepath.Join(dir, "/iaac/ephemeral/Pulumi.README.md")
-	readmeBytes, err := ioutil.ReadFile(filePath)
+	readmeBytes, err := loadReadmeFile()
 	if err != nil {
 		return err
 	}
 
 	ctx.Export("readme", pulumi.String(string(readmeBytes)))
 	return nil
+}
+
+func loadReadmeFile() ([]byte, error) {
+	dir, err := pathToCurrentDir()
+	if err != nil {
+		return nil, err
+	}
+	filePath := filepath.Join(dir, "/iaac/ephemeral/README.md")
+	readmeBytes, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		return nil, err
+	}
+	return readmeBytes, nil
 }
