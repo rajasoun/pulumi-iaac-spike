@@ -1,4 +1,4 @@
-name: Preview Ephemeral Infrastructure as Code 
+name: Update Ephemeral Infrastructure as Code 
 on:
   push:
     branches:
