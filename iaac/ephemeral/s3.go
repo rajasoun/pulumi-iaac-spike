@@ -12,7 +12,7 @@ type S3Config struct {
 	BucketName string
 }
 
-func loadConfig(ctx *pulumi.Context) *S3Config {
+func loadS3Config(ctx *pulumi.Context) *S3Config {
 	conf := config.New(ctx, "")
 	bucketName := conf.Require("bucketName")
 	log.Printf("bucketName = %v", bucketName)

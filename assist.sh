@@ -62,12 +62,19 @@ case ${choice} in
     "teardown")
         teardown $org_proj_stack
     ;;
+    "config")
+        config_name=$3
+        config_value=$4
+        pulumi config set $project:$config_name $config_value
+        echo -e "${GREEN}Config $config_name for $org_proj_stack done successfully${NC}\n" 
+    ;;
     *)
     echo "${RED}Usage: assist.sh < setup | teardown >  ${NC}"
 cat <<-EOF
 Commands:
 ---------
   setup       -> Build & Configure
+  config      -> Set Configurations
   teardown    -> Teardown & Destroy
 EOF
     ;;
