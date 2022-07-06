@@ -1,4 +1,3 @@
 config:
   aws:region: us-east-1
-  ephemeral-iaac:bucketName: pulumi-iaac-spike-demo-bucket
-  
+  ephemeral-iaac:bucketName: ephemeral-iaac-spike-pulumi-bucket
