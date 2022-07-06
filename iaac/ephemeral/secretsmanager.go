@@ -34,7 +34,7 @@ func createSecret(ctx *pulumi.Context, sm *SecertsManager) (*secretsmanager.Secr
 		log.Printf("secret creation failed err = %v", err)
 		return nil, err
 	}
-	secretVersion, err := secretsmanager.NewSecretVersion(ctx, sm.SecretName, &secretsmanager.SecretVersionArgs{
+	_, err = secretsmanager.NewSecretVersion(ctx, sm.SecretName, &secretsmanager.SecretVersionArgs{
 		SecretId:     secret.ID(),
 		SecretString: pulumi.String(sm.Secret),
 	})
@@ -42,6 +42,6 @@ func createSecret(ctx *pulumi.Context, sm *SecertsManager) (*secretsmanager.Secr
 		log.Printf("secret version creation failed err = %v", err)
 		return nil, err
 	}
-	log.Printf("secretName = %v , version = %v creation successfull", sm.SecretName, secretVersion.ToSecretVersionOutput())
+	log.Printf("secretName = %v creation successfull", sm.SecretName)
 	return secret, nil
 }
