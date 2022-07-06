@@ -46,6 +46,7 @@ func manageSecrets(ctx *pulumi.Context) error {
 		return err
 	}
 	// Export the ID (in this case the ARN) of the secret
+	ctx.Export("secretContainerName", secret.Name)
 	ctx.Export("secretContainer", secret.ID())
 	return nil
 }
