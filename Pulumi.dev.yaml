@@ -2,6 +2,6 @@ config:
   aws:region: us-east-1
   ephemeral-iaac:bucketName: ephemeral-iaac-spike-pulumi-bucket
   ephemeral-iaac:secert:
-    secure: AAABAJY69y0q2MWKV8yEUf/SyNniW8Lw+7B7cdfDilZQA3KHLwyuqLlbzaU=
+    secure: AAABABIzN+c72idxFRi/cubTUpZKB4R6PMNy+mgaz+WsdNhBtWgT+GqWzw0=
   ephemeral-iaac:secertsContainerName: devsecops
   ephemeral-iaac:secretName: catalogueName
